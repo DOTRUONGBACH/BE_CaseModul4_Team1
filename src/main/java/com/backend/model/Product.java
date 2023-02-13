@@ -19,11 +19,10 @@ public class Product {
    private Double price;
    @ManyToOne
    private Category category;
-
-
-
-
 //   @OneToMany()
 //   private List<Image> images = new ArrayList<>();
 
+
+   public Product() {
+   }
 }

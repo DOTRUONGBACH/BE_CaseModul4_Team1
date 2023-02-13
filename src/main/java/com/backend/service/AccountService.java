@@ -1,11 +1,8 @@
 package com.backend.service;
 
 import com.backend.model.Account;
-import com.backend.repo.IAccRepo;
+import com.backend.repository.IAccountRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,22 +10,17 @@ import java.util.List;
 @Service
 public class AccountService {
     @Autowired
-    IAccRepo iAccRepo;
-    public List<Account> findALl(){
-        return (List<Account>) iAccRepo.findAll();
-    }
-    public Account findByID(long id){
-        return iAccRepo.findById(id).get();
-    }
-    public void save(Account account){
-        iAccRepo.save(account);
-    }
-    public void delete(long id){
-        iAccRepo.deleteById(id);
+    IAccountRepo iAccountRepo;
+
+    public List<Account> getAll() {
+        return (List<Account>) iAccountRepo.findAll();
     }
 
-//    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        Account account = iAccRepo.
-//    }
+    public Account save(Account account) {
+        return iAccountRepo.save(account);
+    }
+
+    public void delete(long id) {
+        iAccountRepo.deleteById(id);
+    }
 }
