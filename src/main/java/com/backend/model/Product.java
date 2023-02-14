@@ -20,10 +20,8 @@ public class Product {
    @ManyToOne
    private Category category;
 
-
-
-
 //   @OneToMany()
 //   private List<Image> images = new ArrayList<>();
+
 
 }
