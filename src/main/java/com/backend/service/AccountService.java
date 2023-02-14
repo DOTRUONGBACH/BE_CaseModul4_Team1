@@ -1,6 +1,7 @@
 package com.backend.service;
 
 import com.backend.model.Account;
+import com.backend.model.Role;
 import com.backend.repository.IAccountRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -10,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -33,6 +35,8 @@ public class AccountService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Account account = iAccountRepo.findAccountByUserName(username);
-        return new User(account.getUserName(), account.getPassWord(), (Collection<? extends GrantedAuthority>) account.getRole());
+        List<Role> roles = new ArrayList<>();
+        roles.add(account.getRole());
+        return new User(account.getUserName(), account.getPassWord(), roles);
     }
 }
