@@ -32,11 +32,16 @@ public class AccountService implements UserDetailsService {
         iAccountRepo.deleteById(id);
     }
 
+    public Account findAccountByUsername(String username) {
+        return iAccountRepo.findAccountByUserName(username);
+    }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Account account = iAccountRepo.findAccountByUserName(username);
         List<Role> roles = new ArrayList<>();
         roles.add(account.getRole());
         return new User(account.getUserName(), account.getPassWord(), roles);
+//        , account.getFullName(), account.getEmail(), account.getAddress(), account.getPhoneNumber(), account.getAvatar()
     }
 }

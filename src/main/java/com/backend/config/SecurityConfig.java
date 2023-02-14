@@ -1,6 +1,7 @@
 package com.backend.config;
 
 
+import com.backend.config.filter.JwtAuthenticationFilter;
 import com.backend.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -29,16 +30,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManager();
     }
 
+    @Autowired
+    JwtAuthenticationFilter jwtAuthenticationFilter;
+
 
     // phân quyền
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().ignoringAntMatchers("/**");
-        http.authorizeRequests().antMatchers( "/login", "/register", "/products").permitAll()
+        http.authorizeRequests().antMatchers( "/login", "/register").permitAll()
+                .antMatchers("/products").hasAnyAuthority("ROLE_ADMIN")
                 .anyRequest().authenticated()
                 .and().csrf().disable();
-//        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-//                .exceptionHandling();
+        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .exceptionHandling();
         http.sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());

@@ -11,8 +11,8 @@ public class Image {
     private Long id;
     private String url;
 
-//    @ManyToOne
-//    private Product product;
+    @ManyToOne
+    private Product product;
 
 
 }

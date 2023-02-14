@@ -19,8 +19,8 @@ public class Product {
    private Double price;
    @ManyToOne
    private Category category;
-   @OneToMany()
-   private List<Image> images;
+//   @OneToMany()
+//   private List<Image> images;
 
 
    public Product() {
