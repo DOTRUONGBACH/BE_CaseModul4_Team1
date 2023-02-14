@@ -20,7 +20,7 @@ public class ProductController {
 
     @GetMapping
     public Page<Product> getAll(){
-       return productService.getAll(PageRequest.of(0,3, Sort.by("id")));
+       return productService.getAll(PageRequest.of(0,8, Sort.by("id")));
     }
 
     @GetMapping("/image/{id}")
