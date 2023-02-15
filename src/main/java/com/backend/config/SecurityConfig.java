@@ -38,8 +38,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().ignoringAntMatchers("/**");
-        http.authorizeRequests().antMatchers( "/login", "/register").permitAll()
-                .antMatchers("/products").hasAnyAuthority("ROLE_ADMIN")
+        http.authorizeRequests().antMatchers( "/login", "/register","/products","/products/**","/images").permitAll()
+                .antMatchers("/").hasAnyAuthority("ROLE_ADMIN")
                 .anyRequest().authenticated()
                 .and().csrf().disable();
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)

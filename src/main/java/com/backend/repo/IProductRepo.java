@@ -4,6 +4,7 @@ package com.backend.repo;
 import com.backend.model.Product;
 import com.backend.model.query.GetImage;
 import com.backend.model.query.SortSearchFilter;
+import com.backend.model.query.TopProduct;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
@@ -31,4 +32,7 @@ public interface IProductRepo extends PagingAndSortingRepository<Product,Long> {
 
     @Query(nativeQuery = true, value ="SELECT product.id as idProduct, product.name as namep, price, product_status.name as nameStatus  from product join product_status  on product_status.id = product_status_id  WHERE product.category_id = 2")
     List<SortSearchFilter> category2();
+
+    @Query(nativeQuery = true, value ="select product_id as idProduct,product.name as namep,price,product_status.name as nameStatus,sum(amount) as amountp from product join cart_items on product.id = cart_items.product_id join product_status on product_status.id = product.product_status_id group by product_id order by sum(amount) desc limit 3")
+    List<TopProduct> topProduct();
 }

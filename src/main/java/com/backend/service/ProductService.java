@@ -4,6 +4,7 @@ import com.backend.model.Product;
 
 import com.backend.model.query.GetImage;
 import com.backend.model.query.SortSearchFilter;
+import com.backend.model.query.TopProduct;
 import com.backend.repo.IProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -37,6 +38,10 @@ public class ProductService {
     }
     public List<SortSearchFilter> sortLowPrice() {
         return iProductRepo.sortLowPrice();
+    }
+
+    public List<TopProduct> topProduct() {
+        return iProductRepo.topProduct();
     }
 
     public List<SortSearchFilter> searchProduct(String keys) {

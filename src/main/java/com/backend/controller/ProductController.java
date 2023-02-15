@@ -3,6 +3,7 @@ package com.backend.controller;
 import com.backend.model.Product;
 import com.backend.model.query.GetImage;
 import com.backend.model.query.SortSearchFilter;
+import com.backend.model.query.TopProduct;
 import com.backend.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -58,6 +59,11 @@ public class ProductController {
     public List<SortSearchFilter> sortLowPrice(){
         return productService.sortLowPrice();
 
+    }
+
+    @GetMapping("/topProduct")
+    public List<TopProduct> topProduct(){
+        return productService.topProduct();
     }
 
     @GetMapping("/image/{id}")
