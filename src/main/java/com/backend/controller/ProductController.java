@@ -6,8 +6,12 @@ import com.backend.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -39,5 +43,16 @@ public class ProductController {
     @PostMapping("/check/{name}")
     public ResponseEntity<Boolean> checkDuplicateName(@PathVariable String name){
         return new ResponseEntity<>(productService.checkDuplicateName(name), HttpStatus.OK);
+    }
+    @PostMapping("/upImg")
+    public String upImg(@RequestParam MultipartFile fileImg) {
+        String nameImg = fileImg.getOriginalFilename();
+        try {
+            FileCopyUtils.copy(fileImg.getBytes(), new File("C:\\Users\\dell\\Desktop\\Casemd4\\fe\\FE_CaseModul4_Team1\\images\\products\\" + nameImg));
+            return "/images/products/" + nameImg;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
