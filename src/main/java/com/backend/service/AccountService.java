@@ -33,7 +33,12 @@ public class AccountService implements UserDetailsService {
     }
 
     public Account findAccountByUsername(String username) {
-        return iAccRepo.findAccountByUserName(username);
+        Account account = iAccRepo.findAccountByUserName(username);
+        return account;
+    }
+
+    public Account findAccountById(long id) {
+        return iAccRepo.findById(id).get();
     }
 
     @Override
