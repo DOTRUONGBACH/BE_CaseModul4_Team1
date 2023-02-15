@@ -22,4 +22,7 @@ public class Account {
 
     @ManyToOne
     private Role role;
+
+    public Account() {
+    }
 }
