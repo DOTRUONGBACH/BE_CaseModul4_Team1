@@ -1,11 +1,8 @@
 package com.backend.model.query;
 
-public interface GetImage {
+public interface SortSearchFilter {
     Integer getIdProduct();
-    String getDescription();
     String getNamep();
     Double getPrice();
-    String getNameCategory();
     String getNameStatus();
-    String getUrl();
 }
