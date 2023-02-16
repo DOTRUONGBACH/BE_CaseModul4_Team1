@@ -19,8 +19,6 @@ public class Product {
    private Double price;
    @ManyToOne
    private Category category;
-//   @OneToOne()
-//   private Image image;
 
 
    public Product() {

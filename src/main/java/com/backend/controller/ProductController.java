@@ -2,6 +2,7 @@ package com.backend.controller;
 
 
 import com.backend.model.Product;
+import com.backend.service.ImageService;
 import com.backend.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,8 @@ import java.util.List;
 public class ProductController {
     @Autowired
     ProductService productService;
+    @Autowired
+    ImageService imageService;
 
     @GetMapping
     public List<Product> getAll() {
@@ -38,7 +41,9 @@ public class ProductController {
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable long id) {
+        imageService.delete(id);
         productService.delete(id);
+
     }
     @PostMapping("/check/{name}")
     public ResponseEntity<Boolean> checkDuplicateName(@PathVariable String name){

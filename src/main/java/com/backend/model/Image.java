@@ -1,6 +1,7 @@
 package com.backend.model;
 
 import javax.persistence.*;
+
 import lombok.Data;
 
 @Data
@@ -12,8 +13,7 @@ public class Image {
     private String url;
 
     @ManyToOne
-    private Product product;
-
+    Product product;
 
 
 }
