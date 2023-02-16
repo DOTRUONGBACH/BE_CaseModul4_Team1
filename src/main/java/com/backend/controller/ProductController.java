@@ -53,7 +53,7 @@ public class ProductController {
     public String upImg(@RequestParam MultipartFile fileImg) {
         String nameImg = fileImg.getOriginalFilename();
         try {
-            FileCopyUtils.copy(fileImg.getBytes(), new File("C:\\Users\\dell\\Desktop\\Casemd4\\fe\\FE_CaseModul4_Team1\\images\\products\\" + nameImg));
+            FileCopyUtils.copy(fileImg.getBytes(), new File("C:\\Users\\dell\\Desktop\\Casemd4_2\\fe\\FE_CaseModul4_Team1\\images\\products\\" + nameImg));
             return "/images/products/" + nameImg;
         } catch (IOException e) {
             e.printStackTrace();
