@@ -21,7 +21,7 @@ public class ProductController {
     ProductService productService;
 
     @GetMapping("/show")
-    public Page<Product> getAll(){
+    public Page<Product> showAll(){
        return productService.showAll(PageRequest.of(0,8, Sort.by("id")));
 
     }
