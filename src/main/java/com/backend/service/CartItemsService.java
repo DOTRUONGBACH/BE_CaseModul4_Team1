@@ -18,7 +18,8 @@ public class CartItemsService {
     ICartItemsRepo iCartItemsRepo;
     @Autowired
     IAccRepo iAccRepo;
-//    public List<CartItems> getAllCartItems() {
+
+    //    public List<CartItems> getAllCartItems() {
 //       return (List<CartItems>) iCartItemsRepo.findAll();
 //    }
     public long getIdAccountByUsername(String username) {
@@ -28,15 +29,23 @@ public class CartItemsService {
     public List<CartItems> findAllCartItemsByIdAccount(long id) {
         return iCartItemsRepo.findAllCartItemsByIdAccount(id);
     }
+
     public void addToCart(CartItems item, Cart cart) {
         CartItems cartItems = iCartItemsRepo.findCartItemsByProductAndCart_Id(item.getProduct(), cart.getId());
-        if(cartItems==null) {
+        if (cartItems == null) {
             iCartItemsRepo.save(item);
         } else {
-            cartItems.setAmount(cartItems.getAmount()+1);
+            cartItems.setAmount(cartItems.getAmount() + 1);
             item.setCart(cart);
             iCartItemsRepo.save(cartItems);
         }
+    }
+
+    public void deleteCartItem() {
+    }
+
+    public void deleteProductCart(CartItems item) {
+        iCartItemsRepo.delete(item);
     }
 
 

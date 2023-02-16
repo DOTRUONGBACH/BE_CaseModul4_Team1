@@ -15,6 +15,10 @@ import java.util.Map;
 public class CartService {
     @Autowired
     ICartRepo iCartRepo;
+    @Autowired
+    ICartItemsRepo iCartItemsRepo;
+    @Autowired
+    CartItemsService cartItemsService;
     public Cart findCartByUsername(String username) {
        return iCartRepo.findCartByAccount_UserName(username);
     }
@@ -26,5 +30,10 @@ public class CartService {
     }
     public Cart save(Cart cart) {
         return iCartRepo.save(cart);
+    }
+    public void deleteCart(String username) {
+        Long id = iCartRepo.findCartByAccount_UserName(username).getId();
+        iCartRepo.deleteById(id);
+//        iCartRepo.deleteCartByAccount_UserName(username);
     }
 }

@@ -14,4 +14,6 @@ public interface ICartItemsRepo extends CrudRepository<CartItems,Long> {
     CartItems findCartItemsById(Long id);
     CartItems findCartItemsByProduct(Product product);
     CartItems findCartItemsByProductAndCart_Id(Product product, Long id);
+    void deleteAllByCart_Id(Long id);
+    void deleteCartItemsByCart_Id(Long id);
 }
