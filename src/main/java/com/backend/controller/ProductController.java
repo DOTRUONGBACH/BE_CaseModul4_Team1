@@ -33,11 +33,11 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable long id) {
+    public void delete(@PathVariable Long id) {
         productService.delete(id);
     }
     @PostMapping("/check/{name}")
-    public ResponseEntity<Boolean> checkDuplicateName(@PathVariable String name){
+    public ResponseEntity<Boolean> checkDuplicateName(@PathVariable String name) {
         return new ResponseEntity<>(productService.checkDuplicateName(name), HttpStatus.OK);
     }
 }

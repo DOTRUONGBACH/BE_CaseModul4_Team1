@@ -30,10 +30,9 @@ public class ProductService {
 
     public boolean checkDuplicateName(String name) {
         Product product = iProductRepo.findProductByName(name);
-        if (product == null){
+        if (product == null) {
             return true;
-        }return false;
+        }
+        return false;
     }
-
-
 }
