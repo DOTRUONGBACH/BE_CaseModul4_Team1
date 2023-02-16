@@ -1,7 +1,7 @@
-package com.backend.repository;
+package com.backend.repo;
 
 import com.backend.model.ProductStatus;
 import org.springframework.data.repository.CrudRepository;
 
-public interface IProductStt extends CrudRepository<ProductStatus,Long> {
+public interface IProductSttRepo extends CrudRepository<ProductStatus,Long> {
 }

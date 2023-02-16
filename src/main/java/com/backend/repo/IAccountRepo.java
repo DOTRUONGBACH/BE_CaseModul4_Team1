@@ -1,7 +1,6 @@
-package com.backend.repository;
+package com.backend.repo;
 
 import com.backend.model.Account;
-import com.backend.model.Product;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

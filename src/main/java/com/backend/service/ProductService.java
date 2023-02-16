@@ -1,7 +1,7 @@
 package com.backend.service;
 
 import com.backend.model.Product;
-import com.backend.repository.IProductRepository;
+import com.backend.repo.IProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class ProductService {
     @Autowired
-    IProductRepository iProductRepo;
+    IProductRepo iProductRepo;
 
     public List<Product> getAll() {
         return (List<Product>) iProductRepo.findAll();
