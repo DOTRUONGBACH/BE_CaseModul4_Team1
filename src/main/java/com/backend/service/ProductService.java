@@ -19,7 +19,7 @@ public class ProductService {
     @Autowired
     IProductRepo iProductRepo;
 
-    public Page<Product> getAll(Pageable pageable) {
+    public Page<Product> showAll(Pageable pageable) {
         return iProductRepo.findAll(pageable);
     }
 
@@ -51,13 +51,6 @@ public class ProductService {
         return iProductRepo.findById(id).get();
     }
 
-    public Product save(Product product){
-        return iProductRepo.save(product);
-    }
-
-    public void delete(long id){
-        iProductRepo.deleteById(id);
-    }
 
     public List<GetImage> getAllByImage(long id) {
         return iProductRepo.getImageById(id);

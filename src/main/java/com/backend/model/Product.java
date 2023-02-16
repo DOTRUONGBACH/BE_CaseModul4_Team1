@@ -20,6 +20,6 @@ public class Product {
    @ManyToOne
    private Category category;
 
-
-
+   public Product() {
+   }
 }

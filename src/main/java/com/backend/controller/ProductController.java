@@ -20,20 +20,20 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-    @GetMapping
+    @GetMapping("/show")
     public Page<Product> getAll(){
-       return productService.getAll(PageRequest.of(0,8, Sort.by("id")));
+       return productService.showAll(PageRequest.of(0,8, Sort.by("id")));
 
     }
 
     @GetMapping("/sortASC")
     public Page<Product> sortByPriceASC(){
-        return productService.getAll(PageRequest.of(0,8, Sort.by("price").ascending()));
+        return productService.showAll(PageRequest.of(0,8, Sort.by("price").ascending()));
     }
 
     @GetMapping("/sortDESC")
     public Page<Product> sortByPriceDESC(){
-        return productService.getAll(PageRequest.of(0,8, Sort.by("price").descending()));
+        return productService.showAll(PageRequest.of(0,8, Sort.by("price").descending()));
     }
 
     @GetMapping("/filterCategory1")
@@ -76,24 +76,5 @@ public class ProductController {
         return productService.searchProduct(keys);
     }
 
-    @GetMapping ("/{id}")
-    public Product findById(@PathVariable long id){
-        return productService.findByID(id);
-    }
-
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable long id){
-        productService.delete(id);
-    }
-
-    @PostMapping
-    public Product save(@RequestBody Product product){
-        return productService.save(product);
-    }
-
-    @PutMapping("/{id}")
-    public Product edit(@RequestBody Product product){
-        return productService.save(product);
-    }
 
 }
